@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaijaCardTrade | Nigerian Gift Card Trading</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-gift"></i>
+                <span>NaijaCardTrade</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#trade" class="nav-link">Trade Now</a>
+                <a href="#rates" class="nav-link">Rates</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="pages/dashboard.html" class="nav-link dashboard-btn">
+                    <i class="fas fa-user-circle"></i> Dashboard
+                </a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Trade Your Gift Cards For Instant <span class="highlight">Naira</span></h1>
+                <p class="hero-subtitle">Nigeria's most trusted platform for buying and selling gift cards. Get the best rates for Amazon, Apple, Google Play, Steam, and more!</p>
+                
+                <div class="hero-buttons">
+                    <a href="#trade" class="btn btn-primary">Sell Gift Card Now</a>
+                    <a href="#rates" class="btn btn-secondary">Check Rates</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>5,000+</h3>
+                        <p>Successful Trades</p>
+                    </div>
+                    <div class="stat">
+                        <h3>₦250M+</h3>
+                        <p>Total Payouts</p>
+                    </div>
+                    <div class="stat">
+                        <h3>99%</h3>
+                        <p>Customer Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="card-stack">
+                    <div class="card card-1">
+                        <i class="fab fa-amazon"></i>
+                        <span>Amazon</span>
+                    </div>
+                    <div class="card card-2">
+                        <i class="fab fa-apple"></i>
+                        <span>Apple</span>
+                    </div>
+                    <div class="card card-3">
+                        <i class="fab fa-google-play"></i>
+                        <span>Google Play</span>
+                    </div>
+                    <div class="card card-4">
+                        <i class="fab fa-steam"></i>
+                        <span>Steam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Section -->
+    <section class="trading-section" id="trade">
+        <div class="container">
+            <h2 class="section-title">Trade Your Gift Cards</h2>
+            <p class="section-subtitle">Select a gift card to get started with your trade</p>
+            
+            <div class="cards-grid">
+                <!-- Cards will be populated by JavaScript -->
+            </div>
+            
+            <div class="trade-form-container">
+                <h3>Start Your Trade</h3>
+                <form id="tradeForm">
+                    <div class="form-group">
+                        <label for="cardType">Select Gift Card Type</label>
+                        <select id="cardType" required>
+                            <option value="">Choose a card</option>
+                            <option value="amazon">Amazon Gift Card</option>
+                            <option value="apple">Apple Gift Card</option>
+                            <option value="google">Google Play Gift Card</option>
+                            <option value="steam">Steam Wallet Code</option>
+                            <option value="visa">Visa Prepaid Card</option>
+                            <option value="itunes">iTunes Gift Card</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardAmount">Card Amount (USD)</label>
+                        <input type="number" id="cardAmount" placeholder="e.g. 50" min="5" step="5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardValue">You Will Receive (₦)</label>
+                        <div class="calculated-value" id="calculatedValue">₦0.00</div>
+                        <small>Rate: <span id="currentRate">₦0/$1</span></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paymentMethod">Select Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="">Choose payment method</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="airtime">Airtime</option>
+                            <option value="bitcoin">Bitcoin</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Proceed to Trade</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rates Section -->
+    <section class="rates-section" id="rates">
+        <div class="container">
+            <h2 class="section-title">Today's Rates</h2>
+            <p class="section-subtitle">Best rates in Nigeria - Updated daily</p>
+            
+            <div class="rates-table-container">
+                <table class="rates-table">
+                    <thead>
+                        <tr>
+                            <th>Gift Card</th>
+                            <th>Buy Rate (₦/$)</th>
+                            <th>Sell Rate (₦/$)</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ratesTableBody">
+                        <!-- Rates will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="rate-notice">
+                <i class="fas fa-info-circle"></i>
+                <p>Rates are subject to change based on market conditions. Please check regularly for updates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Trade your gift cards in 3 simple steps</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <span>1</span>
+                    </div>
+                    <h3>Select Card & Amount</h3>
+                    <p>Choose the gift card type and enter the amount you want to trade.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <span>2</span>
+                    </div>
+                    <h3>Upload & Verify</h3>
+                    <p>Upload clear images of your gift card and wait for our verification.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <span>3</span>
+                    </div>
+                    <h3>Get Paid Instantly</h3>
+                    <p>Receive your payment via your preferred method within minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Traders Say</h2>
+            <p class="section-subtitle">Join thousands of satisfied customers across Nigeria</p>
+            
+            <div class="testimonials-container">
+                <!-- Testimonials will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="#" class="logo footer-logo">
+                        <i class="fas fa-gift"></i>
+                        <span>NaijaCardTrade</span>
+                    </a>
+                    <p>Nigeria's fastest and most reliable gift card trading platform since 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#trade">Trade Now</a></li>
+                        <li><a href="#rates">Rates</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@naijacardtrade.com</li>
+                        <li><i class="fas fa-phone"></i> +234 801 234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 NaijaCardTrade. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Trade Modal -->
+    <div class="modal" id="tradeModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Trade Initiated</h2>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
